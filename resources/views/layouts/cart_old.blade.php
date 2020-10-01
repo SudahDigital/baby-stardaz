@@ -65,9 +65,9 @@
                                                 <h5 class="product-name" style="color: #41B1CD !important; font-weight: bold;">{{$value->product_name}}</h5>
                                                 <p id="mount3_{{$value->id}}" style="color: #41B1CD !important;">Rp {{ number_format($amount, 0, ',', '.') }}</p>
                                                 <div>
-                                                    <button type="button" class="btn btn-primary button_minus" onclick="cart_minus('{{$value->id}}')" style="padding: 0; text-align: center;">-</button>
+                                                    <button id="minus" value="{{$value->id}}" type="button" class="btn btn-primary button_minus" onclick="cart_minus('{{$value->id}}')" style="padding: 0; text-align: center;">-</button>
                                                     <span class="mr-1 ml-1" id="show_m3{{$value->id}}">{{$value->mount}}</span>
-                                                    <button type="button" class="btn btn-primary button_plus" onclick="cart_plus('{{$value->id}}')" style="padding: 0; text-align: center;">+</button>
+                                                    <button id="plus" value="{{$value->id}}" type="button" class="btn btn-primary button_plus" onclick="cart_plus('{{$value->id}}')" style="padding: 0; text-align: center;">+</button>
                                                     <input type="hidden" id="{{$value->id}}" value="{{$value->mount}}">
                                                     <input type="hidden" id="harga_m{{$value->id}}" value="{{$amount}}">
                                                     <input type="hidden" id="harga{{$value->id}}" value="{{$value->product_harga}}">
@@ -75,8 +75,8 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <a class="btn btn-sm btn-danger" href="{{route('cart_delete',$value->id)}}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja Anda?');"><i class="fa fa-times"></i></a>
-                                                <a id="containner" value="tes" class="btn btn-sm btn-primary"><i class="fa fa-times" style="color: white;"></i></a>
+                                                <!-- <a class="btn btn-sm btn-danger" href="{{route('cart_delete',$value->id)}}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja Anda?');"><i class="fa fa-times"></i></a> -->
+                                                <button id="containner" value="{{$value->id}}" class="btn btn-sm btn-danger"><i class="fa fa-times" style="color: white;"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -137,90 +137,10 @@
                 }
 
                 $(function( $ ){
-                    /*console.log($.ajax({
-                            type: "GET",
-                            url: "{{url('/cart/delete')}}"+'/'+id,
-                            data: {id:id},
-                            success: function (data) {
-                                Swal.fire({
-                                   title: 'Sukses',
-                                   text: 'Item ini berhasil di hapus',
-                                   icon: 'success'}).then(function(){ 
-                                location.reload();
-                                });
-                            }         
-                        }));*/
-
                     $('#containner').click(function(){
-                        alert('jalan');
+                        // alert($(this).val());
+                        var id_prod = $(this).val();
 
-                        /*Swal.fire({
-                          title: 'Hapus barang ?',
-                          text: "Item ini akan di hapus dari keranjangmu",
-                          icon: 'warning',
-                          showCancelButton: true,
-                          confirmButtonColor: '#4db849',
-                          cancelButtonColor: '#d33',
-                          confirmButtonText: 'Hapus',
-                          cancelButtonText: "Batal"
-                        }).then((result) => {
-                          if (result.isConfirmed) {
-
-                            $.ajax({
-                                type: "GET",
-                                url: "{{url('/cart/delete')}}"+'/'+id,
-                                data: {id:id},
-                                success: function (data) {
-                                    Swal.fire({
-                                       title: 'Sukses',
-                                       text: 'Item ini berhasil di hapus',
-                                       icon: 'success'}).then(function(){ 
-                                    location.reload();
-                                    });
-                                }         
-                            });
-                          }
-                          
-                        });*/
-
-                    });
-                    
-                });
-
-                /*function valDel(id){
-                    // $('#edit-modal').modal('show');
-                    Swal.fire({
-                      title: 'Hapus barang ?',
-                      text: "Item ini akan di hapus dari keranjangmu",
-                      icon: 'warning',
-                      showCancelButton: true,
-                      confirmButtonColor: '#4db849',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'Hapus',
-                      cancelButtonText: "Batal"
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-
-                        $.ajax({
-                            type: "GET",
-                            url: "{{url('/cart/delete')}}"+'/'+id,
-                            data: {id:id},
-                            success: function (data) {
-                                Swal.fire({
-                                   title: 'Sukses',
-                                   text: 'Item ini berhasil di hapus',
-                                   icon: 'success'}).then(function(){ 
-                                location.reload();
-                                });
-                            }         
-                        });
-                      }
-                      
-                    });
-                }*/
-                /*$(function () {
-                    function valDel(id){
-                        // $('#edit-modal').modal('show');
                         Swal.fire({
                           title: 'Hapus barang ?',
                           text: "Item ini akan di hapus dari keranjangmu",
@@ -235,8 +155,8 @@
 
                             $.ajax({
                                 type: "GET",
-                                url: "{{url('/cart/delete')}}"+'/'+id,
-                                data: {id:id},
+                                url: "{{url('/cart/delete')}}"+'/'+id_prod,
+                                data: {id:id_prod},
                                 success: function (data) {
                                     Swal.fire({
                                        title: 'Sukses',
@@ -247,10 +167,39 @@
                                 }         
                             });
                           }
-                          
                         });
-                    }
-                });*/
+                    });
+
+                    $('#minus').click(function(){
+                        var id    = $(this).val();
+                        var mount = $('#'+id).val();
+                        var total_mount = parseInt(mount) + 1;
+
+                        $.ajax({
+                          url: '/cart/update_mount?id='+id+'&mount='+total_mount+'&type=min',
+                          success : function(data){
+                            if (data=='success') {
+                              // Swal.fire('success');
+                            }
+                          }
+                        });
+                    });
+
+                     $('#plus').click(function(){
+                        var id    = $(this).val();
+                        var mount = $('#'+id).val();
+                        var total_mount = parseInt(mount) - 1;
+
+                        $.ajax({
+                          url: '/cart/update_mount?id='+id+'&mount='+total_mount+'&type=plus',
+                          success : function(data){
+                            if (data=='success') {
+                              // Swal.fire('success');
+                            }
+                          }
+                        });
+                    });
+                });
 
             </script>
 @endsection
