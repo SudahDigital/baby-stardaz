@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Orideli</title>
+    <title>Website | Baby Stardaz</title>
 
     <link rel="icon" href="{{ asset('assets/image/icon.png')}}" type="image/png" sizes="16x16">
     <!-- Bootstrap CSS CDN -->
@@ -34,7 +34,7 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/image/baby-stardaz.jpg') }}" width="80" height="100" class="d-inline-block align-top" alt="" loading="lazy">
+                    <img src="{{ asset('assets/image/babystardaz01.jpg') }}" width="120px" height="120px" class="d-inline-block align-top" alt="" loading="lazy">
                 </a>
             </div>
             <ul class="list-unstyled components">
@@ -47,23 +47,23 @@
                     </div>
                 </form>
                 <li class="active">
-                    <a href="{{ url('/') }}">Beranda</a>
+                    <a style="border-bottom: 3px solid white" href="{{ url('/') }}">Beranda</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kategori Produk</a>
+                    <a style="border-bottom: 3px solid white" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kategori Produk</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         @foreach($category as $key => $value)
                         <li>
-                            <a href="{{URL::route('product_category', ['id'=>$value->id, 'category_name'=>$value->category_name] )}}" style="font-size: 1.1em !important;">{{$value->category_name}}</a>
+                            <a style="border-bottom: 3px solid white" href="{{URL::route('product_category', ['id'=>$value->id, 'category_name'=>$value->category_name] )}}" style="font-size: 1.1em !important;">{{$value->category_name}}</a>
                         </li>
                         @endforeach
                     </ul>
                 </li>
                 <li>
-                    <a href="{{URL::route('cara_belanja')}}">Cara Berbelanja</a>
+                    <a style="border-bottom: 3px solid white" href="{{URL::route('cara_belanja')}}">Cara Berbelanja</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('contact')}}">Kontak Kami</a>
+                    <a style="border-bottom: 3px solid white" href="{{URL::route('contact')}}">Kontak Kami</a>
                 </li>
             </ul>
 
@@ -75,24 +75,58 @@
                     <a href="{{route('register')}}" class="register">Register</a>
                 </li>
             </ul>
+
+            <div class="row text-center">
+                <div class="col-12 my-auto mx-auto">
+                    <a href="https://www.facebook.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_facebook.png') }}" alt="" class="img-fluid" style="width: 10px;">
+                    </a>
+                    <a href="https://www.instagram.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_instagram.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                    <a href="https://www.youtube.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_youtube.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                    <a href="https://twitter.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_twitter.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                </div>
+            </div>
         </nav>
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1;">
+           <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1;">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-success button-burger-menu">
                         <i class="fas fa-align-justify"></i>
                     </button>
                     <a class="navbar-brand ml-md-5 mx-auto" href="/">
-                        <img src="{{ asset('assets/image/logo-nav.png') }}" width="120px" height="30px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
+                        <img src="{{ asset('assets/image/babystardaz.jpg') }}" width="120px" height="120px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
                     </a>
                     <form action="{{route('product_search')}}" class="form-inline my-2 my-lg-0 ml-auto d-none d-md-inline-block">
                         <div class="input-group">
-                            <input class="form-control d-inline-block m-100 search_input_navbar text-center" name="keyword" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search-addon">
+                            <input class="form-control d-inline-block m-100 search_input_navbar text-center" name="keyword" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search-addon"> -->
                             <!-- <div class="input-group-append">
                                 <button class="btn btn-outline-success my-2 my-sm-0 search_botton_navbar" type="submit"id="button-search-addon"><i class="fa fa-search"></i></button>
                             </div> -->
+                        <!-- </div>
+                    </form>
+                </div>
+            </nav> -->
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1;">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary button-burger-menu btn-lg">
+                        <i class="fas fa-align-justify fa-lg"></i>
+                    </button>
+                    <a class="navbar-brand ml-md-5 mx-auto" href="/" style="margin: auto !important">
+                        <img src="{{ asset('assets/image/babystardaz.jpg') }}" width="120px" height="120px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+                    <form action="{{route('product_search')}}">
+                        <div class="input-group">
+                            <button class="btn search_botton_navbar" type="submit" id="button-search-addon"><i class="fa fa-search"></i></button>
+                            <input class="form-control search_input_navbar text-center" name="keyword" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search-addon">
                         </div>
                     </form>
                 </div>
@@ -101,7 +135,7 @@
             <!-- Page Content  -->
             @yield('content')
 
-            <footer class="footer fixed-bottom">
+            <!-- <footer class="footer fixed-bottom">
                 <div class="row">
                     <div class="col-12 my-auto mx-auto">
                         <a href="" class="mr-1 mr-md-3">
@@ -115,7 +149,7 @@
                         </a>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
 
         </div>
     </div>

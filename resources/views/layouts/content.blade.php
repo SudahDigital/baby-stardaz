@@ -11,17 +11,17 @@
                 <div class="col-sm-12 col-md-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb px-0 button_breadcrumb">
-                            <li class="breadcrumb-item" style="color: #4db849 !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item" style="color: #41B1CD !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Produk</li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $category_name }}</li>
                         </ol>
                     </nav>
                 </div>
             @elseif($page == 'search')
-                <div class="col-sm-12 col-md-12">
+                <div class="col-sm-12 col-md-12" style="margin: 10px;">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-0 button_breadcrumb">
-                            <li class="breadcrumb-item" style="color: #4db849 !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item" style="color: #41B1CD !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Pencarian</li>
                         </ol>
                     </nav>
@@ -34,34 +34,46 @@
             @endif
             @foreach($product as $key => $value)
                 <div class="col-6 col-md-6 col-lg-3 mb-5">
-                    <div class="card mx-auto item_product">
+                    <div class="card item_product " style="border: none;">
                         <div class="card-img-top" style="position: relative;">
                             <div class="embed-responsive embed-responsive-4by3">
                                 <div class="embed-responsive-item">
                                     <a href="{{URL::route('product_detail', ['id'=>$value->id, 'product_name'=>urlencode($value->product_name)])}}">
-                                        <img src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : '20200621_184223_0016.jpg').'') }}" class="img-fluid h-100 w-100 img-responsive" alt="...">
+                                        <img src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : 'sleek.jpg').'') }}" class="img-fluid h-100 w-100 img-responsive" alt="..." style="border-radius: 25px;">
                                         <!-- <h5 class="card-title product-name px-1 py-2 mb-0" style="background-color: #4db849 !important; color: #fff !important; position: absolute; bottom: 0; width: 100%; opacity: 0.8;">{{$value->product_name}}</h5> -->
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0" style="background-color: #4db849 !important;">
+                        <div class="card-body p-0" style="background-color: #fff !important;">
                             <div class="float-left px-1 py-2" style="width: 100%;">
-                                <p class="product-price-header mb-0" style="color: #ffffff !important;">{{$value->product_name}}</p>
+                                <p class="product-price-header mb-0" style="color: #000 !important;">{{$value->product_name}}</p>
                             </div>
                         </div>
-                        <div class="card-body p-0" style="background-color: #f7f7f7 !important;">
-                            <div class="float-left px-1 py-2" style="width: 57%; background-color: #d2d2d2 !important; clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);">
-                                <p class="product-price mb-0" id="productPrice{{$value->id}}" style="color: #000 !important;">Rp {{ number_format($value->product_harga, 0, ',', '.') }}</p>
+                        <div class="card-body p-0">
+                            <p style="font-size: 20px">Rp {{ number_format($value->product_harga, 0, ',', '.') }},-</p>
+                        </div>
+                        <div class="card-body p-0">
+                            <p><a class="fas fa-star" style="color: yellow;"></a> Rating</p>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="float-left px-2 py-2">
+                                <form method="post" action="{{route('add_cart')}}">
+                                    @csrf
+                                    <input type="hidden" id="{{$value->id}}" name="jumlah" value="1">
+                                    <input type="hidden" id="harga{{$value->id}}" name="harga" value="{{ $value->product_harga }}">
+                                    <input type="hidden" name="product_id" value="{{$value->id}}">
+                                    <button class="btn btn-block button_add_to_cart" style="color: #fff;">Tambah</button>
+                                </form>
                             </div>
-                            <div class="float-right px-1 py-2 text-center" style="width: 43%; background-color: #f7f7f7 !important;">
-                                <button class="btn btn-success button_plus float-right d-inline-display" onclick="button_plus('{{$value->id}}')" style="padding: 0; text-align: center; border-radius: 100%;">+</button>
+                            <div class="float-right px-1 py-2 text-center" style="width: 43%;">
+                                <button class="btn button_plus d-inline-display" onclick="button_plus('{{$value->id}}')" style="padding: 0; text-align: center; border-radius: 100%; background-color: #fff;">+</button>
                                 <p id="show_{{$value->id}}" class="d-inline" style="color: #000 !important; margin-left: 1px !important; margin-right: 1px !important;">1</p>
-                                <button class="float-left btn btn-success button_minus d-inline-display" onclick="button_minus('{{$value->id}}')" style="padding: 0; text-align: center; border-radius: 100%;">-</button>
+                                <button class="btn button_minus d-inline-display" onclick="button_minus('{{$value->id}}')" style="padding: 0; text-align: center; border-radius: 100%; background-color: #fff;">-</button>
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix mt-3">
+                    <!-- <div class="clearfix mt-3">
                         <form method="post" action="{{route('add_cart')}}">
                             @csrf
                             <input type="hidden" id="{{$value->id}}" name="jumlah" value="1">
@@ -69,7 +81,7 @@
                             <input type="hidden" name="product_id" value="{{$value->id}}">
                             <button class="btn btn-block btn-success button_add_to_cart">Tambah Ke Keranjang</button>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             @endforeach
         </div>
@@ -78,7 +90,7 @@
                 {{ $product->links() }}
             </div>
         </div>
-        <br><br><br>
+        <br><br><br><br><br><br><br>
         <!-- Modal -->
         <div class="modal fade" id="modalCheckout" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" style="width: 100%; max-width:1700px;">

@@ -5,7 +5,7 @@
                     <div class="col-sm-12 col-md-12">
                         <nav aria-label="breadcrumb" class="">
                             <ol class="breadcrumb px-0 button_breadcrumb">
-                                <li class="breadcrumb-item" style="color: #4db849 !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item" style="color: #41B1CD !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Keranjang Belanja</li>
                             </ol>
                         </nav>
@@ -57,7 +57,7 @@
                                                 <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//92/MTA-7130791/gudang_sayur_gudang_sayur_-_sayur_pakchoy_-_pokchoy_-pok_choi_full01_tfvby22m.jpg?output-format=webp" class="card-img-top img-fluid">
                                             </td>
                                             <td class="align-middle">
-                                                <h5 class="product-name" style="color: #4db849 !important; font-weight: bold;">{{$value->product_name}}</h5>
+                                                <h5 class="product-name" style="color: #41B1CD !important; font-weight: bold;">{{$value->product_name}}</h5>
                                                 <p id="mount_{{$value->id}}" style="color: #000 !important;">Rp {{ number_format($amount, 0, ',', '.') }}</p>
                                                 <div>
                                                     <button type="button" class="btn btn-success button_minus" onclick="cart_minus('{{$value->id}}')" style="padding: 0; text-align: center;">-</button>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Orideli</title>
+    <title>Website | Baby Stardaz</title>
 
     <link rel="icon" href="{{ asset('assets/image/icon.png')}}" type="image/png" sizes="16x16">
     <!-- Bootstrap CSS CDN -->
@@ -87,7 +87,7 @@
            
             <div class="sidebar-header mx-auto">
                 <a href="{{ url('/') }}">
-                    <img src="{{ asset('assets/image/baby-stardaz.jpg') }}" width="70" height="90" class="d-inline-block align-top" alt="" loading="lazy">
+                    <img src="{{ asset('assets/image/babystardaz01.jpg') }}" width="120px" height="120px" class="d-inline-block align-top" alt="" loading="lazy" style="margin: auto !important">
                 </a>
             </div>
             <ul class="list-unstyled components">
@@ -100,23 +100,23 @@
                     </div>
                 </form>
                 <li class="active">
-                    <a href="{{ url('/') }}">Beranda</a>
+                    <a href="{{ url('/') }}" style="border-bottom: 3px solid white;">Beranda</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kategori Produk</a>
+                    <a style="border-bottom: 3px solid white" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kategori Produk</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         @foreach($category as $key => $value)
                         <li>
-                            <a href="{{URL::route('product_category', ['id'=>$value->id, 'category_name'=>$value->category_name] )}}" style="font-size: 1.1em !important;">{{$value->category_name}}</a>
+                            <a style="border-bottom: 3px solid white" href="{{URL::route('product_category', ['id'=>$value->id, 'category_name'=>$value->category_name] )}}" style="font-size: 1.1em !important;">{{$value->category_name}}</a>
                         </li>
                         @endforeach
                     </ul>
                 </li>
                 <li>
-                    <a href="{{URL::route('cara_belanja')}}">Cara Berbelanja</a>
+                    <a style="border-bottom: 3px solid white" href="{{URL::route('cara_belanja')}}">Cara Berbelanja</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('contact')}}">Kontak Kami</a>
+                    <a style="border-bottom: 3px solid white" href="{{URL::route('contact')}}">Kontak Kami</a>
                 </li>
             </ul>
 
@@ -128,31 +128,70 @@
                     <a href="{{route('register')}}" class="register">Register</a>
                 </li>
             </ul>
+
+             <div class="row text-center">
+                <div class="col-12 my-auto mx-auto">
+                    <a href="https://www.facebook.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_facebook.png') }}" alt="" class="img-fluid" style="width: 10px;">
+                    </a>
+                    <a href="https://www.instagram.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_instagram.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                    <a href="https://www.youtube.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_youtube.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                    <a href="https://twitter.com/" class="mr-1 mr-md-3">
+                        <img src="{{ asset('assets/image/icon_twitter.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                    </a>
+                </div>
+            </div>
         </nav>
         <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1.5;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1;">
+                <div class="container-fluid">
+                    <div class="col-5 my-auto">
+                        <button type="button" id="sidebarCollapse" class="btn btn-primary button-burger-menu btn-lg">
+                            <i class="fas fa-align-justify fa-lg"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 my-auto">
+                        <a class="navbar-brand ml-md-5 mx-auto" href="/" style="margin: auto !important">
+                            <img src="{{ asset('assets/image/babystardaz.jpg') }}" width="100px" height="100px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="col-4 my-auto">
+                        <div class="col-8 float-right">
+                            <form action="{{route('product_search')}}"  class="form-inline my-2 my-lg-0 ml-auto d-none d-md-inline-block">
+                                <div class="input-group">
+                                    <button class="btn search_botton_navbar" type="submit" id="button-search-addon"><i class="fa fa-search"></i></button>
+                                    <input class="form-control search_input_navbar text-center" name="keyword" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search-addon">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+             <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="z-index: 1;">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn btn-success button-burger-menu">
                         <i class="fas fa-align-justify"></i>
                     </button>
                     <a class="navbar-brand nav-center" href="{{ url('/') }}">
-                        <img src="{{ asset('assets/image/baby-stardaz.jpg') }}" width="100px" height="25px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
+                        <img src="{{ asset('assets/image/babystardaz.jpg') }}" width="120px" height="120px" class="p-0 m-0 d-inline-block align-top" alt="" loading="lazy">
                     </a>
                     <form action="{{route('product_search')}}" class="form-inline my-2 my-lg-0 ml-auto d-none d-md-inline-block">
                         <div class="input-group">
                             <input class="form-control d-inline-block m-100 search_input_navbar" name="keyword" type="text" placeholder="Search" aria-label="Search" aria-describedby="button-search-addon">
-                            <!-- <div class="input-group-append">
-                                <button class="btn btn-outline-success my-2 my-sm-0 search_botton_navbar" type="submit"id="button-search-addon"><i class="fa fa-search"></i></button>
-                            </div> -->
                         </div>
                     </form>
                 </div>
-            </nav>
+            </nav> -->
+
 
             @isset($page)
                 @if($page == 'home') {
                     <!-- BANNER -->
+                    <br><br><br>
                     <div role="main" style="margin-top: -4px;">
                         <div id="bannerSlide" class="carousel slide" data-ride="carousel" >
                             <!-- Indicators -->
@@ -165,12 +204,12 @@
                             <!-- The slideshow -->
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ asset('assets/image/banner-4.jpg') }}" class="w-100 h-100">
-                                </div><!-- 
-                                <div class="carousel-item">
-                                    <img src="{{ asset('assets/image/banner-2.jpg') }}" class="w-100">
+                                    <img src="{{ asset('assets/image/babystardaz_banner.jpg') }}" class="w-100 h-100">
                                 </div>
                                 <div class="carousel-item">
+                                    <img src="{{ asset('assets/image/babystardaz_banner01.jpg') }}" class="w-100 h-100">
+                                </div>
+                                <!-- <div class="carousel-item">
                                     <img src="{{ asset('assets/image/banner-3.jpg') }}" class="w-100">
                                 </div> -->
                             </div>
@@ -191,124 +230,134 @@
             @yield('content')
 
             <footer class="footer fixed-bottom">
-                <div class="row">
-                    <div class="col-5 col-sm-4 my-auto" id="sosmed">
-                        <!-- <a href="https://api.whatsapp.com/send?phone=&text=Halo" class="float-left mr-1 mr-md-3"> -->
-                        <a href="https://api.whatsapp.com/send?phone=+6281776492873&text=Halo" class="float-left mr-1 mr-md-3">
-                            <img src="{{ asset('assets/image/whatsapp_logo.png') }}" alt="" class="img-fluid" style="width: 30px;">
-                        </a>
-                        <a href="https://www.instagram.com/orideli.id/" class="float-left mr-1 mr-md-3">
-                            <img src="{{ asset('assets/image/instagram_logo.png') }}" alt="" class="img-fluid" style="width: 30px;">
-                        </a>
-                        <a href="https://facebook.com/" class="float-left mr-1 mr-md-3">
-                            <img src="{{ asset('assets/image/facebook_logo.png') }}" alt="" class="img-fluid" style="width: 30px;">
-                        </a>
-                    </div>
-                    <div id="tombol_click" class="col-2">
-                        <a href="#" id="clickme" class=" align-self-center" isi="true" style="color: #008000 !important">
-                            <i class="fas fa-chevron-circle-up"></i>
-                        </a>
-                    </div>
-                    <div class="col-5 col-sm-4 my-auto" id="cart_icon">
-                        <?php
-                            if(!empty($cart)) {
-                                $total = 0;
-                                foreach($cart as $key => $value) {
-                                    $amount = $value->product_harga * $value->mount;
-                                    $total += $amount;
+                <div id="footer">
+                    <div class="row">
+                        <div class="col-5 my-auto" id="cart_icon">
+                            <?php
+                                if(!empty($cart)) {
+                                    $total = 0;
+                                    foreach($cart as $key => $value) {
+                                        $amount = $value->product_harga * $value->mount;
+                                        $total += $amount;
+                                    }
+                                
+                            ?>
+                                <a href="#" class="float-left cart" style="position: relative;">
+                                    <img src="{{ asset('assets/image/troli-01.png') }}" alt="" class="img-fluid" style="width: 30px;">
+                                </a>
+                                <div>
+                                    <p class="float-left" style="color: #fff; line-height: 50px;"><strong style="color: #fff;">Rp {{ number_format($total, 0, ',', '.') }}</strong></p>
+                                </div>    
+                            <?php
+                                } else {
+                            ?>
+                                <p class="float-left p-0 my-auto" style="color: #fff;"><strong>Rp 0</strong></p>
+                                <a href="{{route('cart')}}" class="float-right mr-1 mr-md-3 cart" style="position: relative;">
+                                    <!-- <p class="count-cart-one">{{ $count_cart }}</p> -->
+                                    <img src="{{ asset('assets/image/troli-01.png') }}" alt="" class="img-fluid" style="width: 30px;">
+                                </a>
+                                {{-- <button type="button" class="btn btn-success button-pesan mb-0 float-right mr-3" data-toggle="modal" data-target="#modalCheckout">Pesan</button> --}}
+                            <?php
                                 }
-                            
-                        ?>
-                            <div>
-                                <p class="float-right" style="color: #fff; line-height: 50px;"><strong>Rp {{ number_format($total, 0, ',', '.') }}</strong></p>
-                            </div>
-                            <a href="#" class="float-right cart" style="position: relative;">
-                                <?php
-                                    if($count_cart < 10) {
-                                ?>
-                                    <p class="count-cart-one">{{ $count_cart }}</p>
-                                    <img src="{{ asset('assets/image/bucket.png') }}" alt="" class="img-fluid" style="width: 45px;">
-                                <?php
-                                    }  elseif($count_cart < 100) {
-                                ?>
-                                    <p class="count-cart-two">{{ $count_cart }}</p>
-                                    <img src="{{ asset('assets/image/bucket.png') }}" alt="" class="img-fluid" style="width: 45px;">
-                                <?php
-                                    } else {
-                                ?>
-                                    <p class="count-cart-three">{{ $count_cart }}</p>
-                                    <img src="{{ asset('assets/image/bucket2.png') }}" alt="" class="img-fluid" style="width: 45px;">
-                                <?php
-                                    } 
-                                ?>
-                            </a>    
-                        <?php
-                            } else {
-                        ?>
-                            <p class="float-right p-0 my-auto" style="color: #fff;"><strong>Rp 0</strong></p>
-                            <a href="{{route('cart')}}" class="float-right mr-1 mr-md-3 cart" style="position: relative;">
-                                <p class="count-cart-one">{{ $count_cart }}</p>
-                                <img src="{{ asset('assets/image/bucket.png') }}" alt="" class="img-fluid" style="width: 60px;">
+                            ?>
+                        </div>
+                        <div id="tombol_click" class="col-2 my-auto">
+                            <a href="#" id="clickme" class=" align-self-center" isi="true" style="color: #fff !important">
+                                <i class="fas fa-chevron-up fa-lg"></i>
                             </a>
-                            {{-- <button type="button" class="btn btn-success button-pesan mb-0 float-right mr-3" data-toggle="modal" data-target="#modalCheckout">Pesan</button> --}}
-                        <?php
-                            }
-                        ?>
+                        </div>
+                        <div class="col-5 my-auto" id="sosmed">
+                           <p class="float-right mr-1 mr-md-3" style="color: #fff; line-height: 50px;"><strong style="color: #fff;">( {{$count_cart}} Item )</strong></p>
+                        </div>
                     </div>
-                </div>
-                <div class="hidden row" id="book">
-                    <div class="scroll w-100 h-100" id="table_c" style="display: none;">
-                        @php
-                         $total = 0 ;
-                        @endphp
-                        @foreach($cart as $key => $value)
-                        @php
-                        $amount = $value->product_harga * $value->mount;
-                        $total += $amount;
-                        @endphp
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="float-left">
-                                    <img class="img-thumbnail img-fluid" src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : '20200621_184223_0016.jpg').'') }}" style="max-width: 100px;max-height: 100px;" class="img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="float-left">
-                                    <h5 class="product-name" style="color: #4db849 !important; font-weight: bold;">{{$value->product_name}}</h5>
-                                    <span id="mount2_{{$value->id}}" style="color: #000 !important;">Rp {{ number_format($amount, 0, ',', '.') }}</span>
-                                    <div class="text-left">
-                                        <button type="button" class="btn btn-success button_minus" onclick="cart('{{$value->id}}','min')" style="padding: 0; text-align: center;">-</button>
-                                        <span class="mr-1 ml-1" id="show_m2{{$value->id}}"> {{$value->mount}} </span>
-                                        <button type="button" class="btn btn-success button_plus" onclick="cart('{{$value->id}}','plus')" style="padding: 0; text-align: center;">+</button>
-                                        <input type="hidden" id="{{$value->id}}" value="{{$value->mount}}">
-                                        <input type="hidden" id="harga_m{{$value->id}}" value="{{$amount}}">
-                                        <input type="hidden" id="harga{{$value->id}}" value="{{$value->product_harga}}">
+                    <div class="hidden row" id="book">
+                        <div class="scroll w-100 h-100" id="table_c" style="display: none;">
+                            @php
+                             $total = 0 ;
+                            @endphp
+                            @foreach($cart as $key => $value)
+                            @php
+                            $amount = $value->product_harga * $value->mount;
+                            $total += $amount;
+                            @endphp
+                            <div class="row mb-3">
+                                <div class="col-4">
+                                    <div class="text-center">
+                                        <img class="img-thumbnail img-fluid" src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : 'sleek.jpg').'') }}" style="max-width: 100px;max-height: 100px;" class="img-fluid">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-2">
-                                <!-- <a class="btn btn-sm btn-danger" href="{{route('cart_delete',$value->id)}}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja Anda?');"><i class="fa fa-times"></i></a> -->
-                                <a class="btn btn-sm btn-danger" onclick="valDel('{{$value->id}}')"><i class="fa fa-times" style="color: white;"></i></a>
-                            </div>
-                        </div>
-                        @endforeach
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="float-left">
-                                    <span style="background: #ffffff;font-size: 250%">&nbsp;</span>
+                                <div class="col-6">
+                                    <div class="float-left">
+                                        <h5 class="product-name" style="color: #fff !important; font-weight: bold;">{{$value->product_name}}</h5>
+                                        <span id="mount2_{{$value->id}}" style="color: #fff !important;">Rp {{ number_format($amount, 0, ',', '.') }}</span>
+                                        <div class="text-left">
+                                            <button type="button" class="btn btn-primary button_minus" onclick="cart('{{$value->id}}','min')" style="padding: 0; text-align: center;">-</button>
+                                            <span class="mr-1 ml-1" id="show_m2{{$value->id}}" style="color: #fff"> {{$value->mount}} </span>
+                                            <button type="button" class="btn btn-primary button_plus" onclick="cart('{{$value->id}}','plus')" style="padding: 0; text-align: center;">+</button>
+                                            <input type="hidden" id="{{$value->id}}" value="{{$value->mount}}">
+                                            <input type="hidden" id="harga_m{{$value->id}}" value="{{$amount}}">
+                                            <input type="hidden" id="harga{{$value->id}}" value="{{$value->product_harga}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <!-- <a class="btn btn-sm btn-danger" href="{{route('cart_delete',$value->id)}}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja Anda?');"><i class="fa fa-times"></i></a> -->
+                                    <a class="btn btn-sm btn-danger float-center" onclick="valDel('{{$value->id}}')"><i class="fa fa-times" style="color: white;"></i></a>
                                 </div>
                             </div>
+                            @endforeach
+                            <!-- <div class="row">
+                                <div class="col-12">
+                                    <div class="float-left">
+                                        <span style="background: #41B1CD;font-size: 250%">&nbsp;</span>
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="proses_to_chart_slide w-100"  style="background-color: white;">
+                    <div id="listcart" class="col-12 my-auto" style="background-color: #41B1CD; height: 50px; display: none;">
                         {{ $count_cart }} Item | <span id="total_">Rp {{ number_format($total, 0, ',', '.') }}</span>
-                        <a href="{{route('cart')}}" class="btn btn-success align-self-right btn-sm">
+                        <a href="{{route('cart')}}" class="btn btn-primary align-self-right btn-sm" style="background-color: #fff; color: #41B1CD">
                         <i class="fa fa-shopping-basket ml-1"></i>
                         <input type="hidden" id="total" value="{{$total}}">
                         Pesan Sekarang
-                        </a>                                
+                        </a>  
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-12 my-auto proses_to_chart_slide"  style="background-color: white;">
+                            {{ $count_cart }} Item | <span id="total_">Rp {{ number_format($total, 0, ',', '.') }}</span>
+                            <a href="{{route('cart')}}" class="btn btn-success align-self-right btn-sm" style="background-color: #41B1CD">
+                            <i class="fa fa-shopping-basket ml-1"></i>
+                            <input type="hidden" id="total" value="{{$total}}">
+                            Pesan Sekarang
+                            </a>                                
+                        </div>
+                    </div> -->
+                </div>
+                <div id="bottom-footer">
+                    <div class = "inner-wrap clearfix">
+                        <img src="{{ asset('assets/image/babystardaz01.jpg') }}" width="50px" height="50px">
+                    </div>
+                    <div class = "inner-wrap clearfix">
+                        <div class="row text-center">
+                            <div class="col-12 my-auto mx-auto">
+                                <a href="https://www.facebook.com/" class="mr-1 mr-md-3">
+                                    <img src="{{ asset('assets/image/icon_facebook.png') }}" alt="" class="img-fluid" style="width: 10px;">
+                                </a>
+                                <a href="https://www.instagram.com/" class="mr-1 mr-md-3">
+                                    <img src="{{ asset('assets/image/icon_instagram.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                                </a>
+                                <a href="https://www.youtube.com/" class="mr-1 mr-md-3">
+                                    <img src="{{ asset('assets/image/icon_youtube.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                                </a>
+                                <a href="https://twitter.com/" class="mr-1 mr-md-3">
+                                    <img src="{{ asset('assets/image/icon_twitter.png') }}" alt="" class="img-fluid" style="width: 20px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "inner-wrap clearfix">
+                        <a style="color: #fff; font-size: 12px;">@Copyright 2020</a>
                     </div>
                 </div>
             </footer>

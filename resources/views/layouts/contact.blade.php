@@ -1,12 +1,12 @@
 @extends('template-nocart')
 @section('content')
-    <div class="container" style="margin-top: 30px;">
+    <div class="container" style="margin-top: 100px;">
         <div class="row align-middle">
             <div class="col-sm-12 col-md-12">
                 <nav aria-label="breadcrumb" class="">
                     <ol class="breadcrumb px-0 button_breadcrumb">
-                        <li class="breadcrumb-item" style="color: #4db849 !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kontak Kami</li>
+                        <li  style="color: #41B1CD !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                        <li  aria-current="page"> &nbsp; | Kontak Kami</li>
                     </ol>
                 </nav>
             </div>
@@ -42,30 +42,30 @@
                 </form> -->
                 <div class="row section_content">
                     <div class="col-sm-12 col-md-6 mb-5">
-                        <div class="card mx-auto item_product h-100">
+                        <div class="card" style="background-color: #41B1CD; border-radius: 25px;">
                             <div class="row card-body">
-                            <div class="col-12 col-md-6 float-left my-auto d-none d-md-inline-block text-center">
-                                <i class="fa fa-envelope fa-5x"></i>
-                            </div>
-                            <div class="col-12 col-md-6 float-right my-auto text-center">
-                                <a class="card-img-top d-md-none d-inline-block fa fa-envelope fa-lg"></a>
-                                <h5 class="card-title" style="font-size: 20px; color: green;">Email</h5>
-                                <h5 class="card-title" style="font-size: 15px">{{$email}}</h5>
-                            </div>
+                                <div class="col-12 col-md-4 float-left my-auto d-none d-md-inline-block text-right">
+                                    <i class="fa fa-phone fa-5x" style="color: #ffffff;"></i>
+                                </div>
+                                <div class="col-12 col-md-8 float-right my-auto text-center" style="color: #ffffff;">
+                                    <a class="card-img-top d-md-none d-inline-block fa fa-phone fa-lg"></a>
+                                    <h5 class="card-title" style="font-size: 20px;">Telepon</h5>
+                                    <h5 class="card-title" style="font-size: 15px">{{$telp}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 mb-5">
-                        <div class="card mx-auto item_product h-100">
+                        <div class="card" style="background-color: #41B1CD; border-radius: 25px;">
                             <div class="row card-body">
-                            <div class="col-12 col-md-6 float-left my-auto d-none d-md-inline-block text-center">
-                                <i class="fa fa-phone fa-5x"></i>
-                            </div>
-                            <div class="col-12 col-md-6 float-right my-auto text-center">
-                                <a class="card-img-top d-md-none d-inline-block fa fa-phone fa-lg"></a>
-                                <h5 class="card-title" style="font-size: 20px; color: green;">Telepon</h5>
-                                <h5 class="card-title" style="font-size: 15px">{{$telp}}</h5>
-                            </div>
+                                <div class="col-12 col-md-4 float-left my-auto d-none d-md-inline-block text-center">
+                                    <i class="fa fa-envelope fa-5x" style="color: #ffffff;"></i>
+                                </div>
+                                <div class="col-12 col-md-8 float-right my-auto text-center" style="color: #ffffff;">
+                                    <a class="card-img-top d-md-none d-inline-block fa fa-envelope fa-lg"></a>
+                                    <h5 class="card-title" style="font-size: 20px;">Email</h5>
+                                    <h5 class="card-title" style="font-size: 15px">{{$email}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>

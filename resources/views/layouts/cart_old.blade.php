@@ -5,7 +5,7 @@
                     <div class="col-sm-12 col-md-12">
                         <nav aria-label="breadcrumb" class="">
                             <ol class="breadcrumb px-0 button_breadcrumb">
-                                <li class="breadcrumb-item" style="color: #4db849 !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                                <li class="breadcrumb-item" style="color: #41B1CD !important;"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Keranjang Belanja</li>
                             </ol>
                         </nav>
@@ -19,19 +19,19 @@
                         <div class="card mx-auto cart_card">
                             <div class="card-body">
                                     <div class="form-group">
-                                        <input style="border:1px solid #4CD31E" type="text" required="true" name="costumer_name" class="form-control" placeholder="Nama" id="name"required autofocus autocomplete="off">
+                                        <input style="border:1px solid #41B1CD" type="text" required="true" name="costumer_name" class="form-control" placeholder="Nama" id="name"required autofocus autocomplete="off">
                                         <!-- <label for="name" class="cart_label">Nama</label> -->
                                     </div>
                                     <div class="form-group">
-                                        <textarea style="border:1px solid #4CD31E" class="form-control" required="true"  name="costumer_adress" rows="5" placeholder="Alamat Pengiriman" id="deliveryAddress" required autocomplete="off"></textarea>
+                                        <textarea style="border:1px solid #41B1CD" class="form-control" required="true"  name="costumer_adress" rows="5" placeholder="Alamat Pengiriman" id="deliveryAddress" required autocomplete="off"></textarea>
                                         <!-- <label for="deliveryAddress" class="cart_label">Alamat Pengiriman</label> -->
                                     </div>  
                                     <div class="form-group">
-                                        <input style="border:1px solid #4CD31E" type="number"  name="costumer_phone" required="true" class="form-control" placeholder="Nomor Telepon" id="phoneNumber" required autocomplete="off">
+                                        <input style="border:1px solid #41B1CD" type="number"  name="costumer_phone" required="true" class="form-control" placeholder="Nomor Telepon" id="phoneNumber" required autocomplete="off">
                                         <!-- <label for="phoneNumber" class="cart_label">Nomor Telepon</label> -->
                                     </div>
                                     <div class="form-group">
-                                        <input style="border:1px solid #4CD31E" type="email" required="true"  name="costumer_email" class="form-control" placeholder="Email" id="email" required autocomplete="off">
+                                        <input style="border:1px solid #41B1CD" type="email" required="true"  name="costumer_email" class="form-control" placeholder="Email" id="email" required autocomplete="off">
                                         <!-- <label for="email" class="cart_label">Email</label> -->
                                     </div>
                             </div>
@@ -59,15 +59,15 @@
                                         @endphp
                                         <tr>
                                             <td class="align-middle img-product" scope="row">
-                                                <img src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : '20200621_184223_0016.jpg').'') }}" class="card-img-top img-fluid">
+                                                <img src="{{ asset('assets/image/product/'.(($value->image_link!='') ? $value->image_link : 'sleek.jpg').'') }}" class="card-img-top img-fluid">
                                             </td>
                                             <td class="align-middle">
-                                                <h5 class="product-name" style="color: #4db849 !important; font-weight: bold;">{{$value->product_name}}</h5>
-                                                <p id="mount3_{{$value->id}}" style="color: #000 !important;">Rp {{ number_format($amount, 0, ',', '.') }}</p>
+                                                <h5 class="product-name" style="color: #41B1CD !important; font-weight: bold;">{{$value->product_name}}</h5>
+                                                <p id="mount3_{{$value->id}}" style="color: #41B1CD !important;">Rp {{ number_format($amount, 0, ',', '.') }}</p>
                                                 <div>
-                                                    <button type="button" class="btn btn-success button_minus" onclick="cart_minus('{{$value->id}}')" style="padding: 0; text-align: center;">-</button>
+                                                    <button type="button" class="btn btn-primary button_minus" onclick="cart_minus('{{$value->id}}')" style="padding: 0; text-align: center;">-</button>
                                                     <span class="mr-1 ml-1" id="show_m3{{$value->id}}">{{$value->mount}}</span>
-                                                    <button type="button" class="btn btn-success button_plus" onclick="cart_plus('{{$value->id}}')" style="padding: 0; text-align: center;">+</button>
+                                                    <button type="button" class="btn btn-primary button_plus" onclick="cart_plus('{{$value->id}}')" style="padding: 0; text-align: center;">+</button>
                                                     <input type="hidden" id="{{$value->id}}" value="{{$value->mount}}">
                                                     <input type="hidden" id="harga_m{{$value->id}}" value="{{$amount}}">
                                                     <input type="hidden" id="harga{{$value->id}}" value="{{$value->product_harga}}">
@@ -76,7 +76,7 @@
                                             </td>
                                             <td class="align-middle">
                                                 <a class="btn btn-sm btn-danger" href="{{route('cart_delete',$value->id)}}" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini dari keranjang belanja Anda?');"><i class="fa fa-times"></i></a>
-                                                <!-- <a class="btn btn-sm btn-danger" onclick="char_tes('{{$value->id}}')"><i class="fa fa-times" style="color: white;"></i></a> -->
+                                                <a id="containner" value="tes" class="btn btn-sm btn-primary"><i class="fa fa-times" style="color: white;"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -89,7 +89,7 @@
                                 </table>
                             </div>
                             <div class="card-footer" id="whatsapp">
-                                <button onclick="whatsapp();" class="btn btn-success btn-block button_order">Pesan Sekarang</button>
+                                <button onclick="whatsapp();" class="btn btn-primary btn-block button_order">Pesan Sekarang</button>
                             </div>
                             <!-- <div class="card-footer">
                                 <button type="submit" class="btn btn-success btn-block button_order">
@@ -101,6 +101,9 @@
                 </div>
                 </form>
             </div>
+
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+            <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script> -->
 
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
             <script type="text/javascript">
@@ -132,8 +135,122 @@
                       }
                     });*/
                 }
+
+                $(function( $ ){
+                    /*console.log($.ajax({
+                            type: "GET",
+                            url: "{{url('/cart/delete')}}"+'/'+id,
+                            data: {id:id},
+                            success: function (data) {
+                                Swal.fire({
+                                   title: 'Sukses',
+                                   text: 'Item ini berhasil di hapus',
+                                   icon: 'success'}).then(function(){ 
+                                location.reload();
+                                });
+                            }         
+                        }));*/
+
+                    $('#containner').click(function(){
+                        alert('jalan');
+
+                        /*Swal.fire({
+                          title: 'Hapus barang ?',
+                          text: "Item ini akan di hapus dari keranjangmu",
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#4db849',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Hapus',
+                          cancelButtonText: "Batal"
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+
+                            $.ajax({
+                                type: "GET",
+                                url: "{{url('/cart/delete')}}"+'/'+id,
+                                data: {id:id},
+                                success: function (data) {
+                                    Swal.fire({
+                                       title: 'Sukses',
+                                       text: 'Item ini berhasil di hapus',
+                                       icon: 'success'}).then(function(){ 
+                                    location.reload();
+                                    });
+                                }         
+                            });
+                          }
+                          
+                        });*/
+
+                    });
+                    
+                });
+
+                /*function valDel(id){
+                    // $('#edit-modal').modal('show');
+                    Swal.fire({
+                      title: 'Hapus barang ?',
+                      text: "Item ini akan di hapus dari keranjangmu",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#4db849',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Hapus',
+                      cancelButtonText: "Batal"
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: "GET",
+                            url: "{{url('/cart/delete')}}"+'/'+id,
+                            data: {id:id},
+                            success: function (data) {
+                                Swal.fire({
+                                   title: 'Sukses',
+                                   text: 'Item ini berhasil di hapus',
+                                   icon: 'success'}).then(function(){ 
+                                location.reload();
+                                });
+                            }         
+                        });
+                      }
+                      
+                    });
+                }*/
+                /*$(function () {
+                    function valDel(id){
+                        // $('#edit-modal').modal('show');
+                        Swal.fire({
+                          title: 'Hapus barang ?',
+                          text: "Item ini akan di hapus dari keranjangmu",
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#4db849',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Hapus',
+                          cancelButtonText: "Batal"
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+
+                            $.ajax({
+                                type: "GET",
+                                url: "{{url('/cart/delete')}}"+'/'+id,
+                                data: {id:id},
+                                success: function (data) {
+                                    Swal.fire({
+                                       title: 'Sukses',
+                                       text: 'Item ini berhasil di hapus',
+                                       icon: 'success'}).then(function(){ 
+                                    location.reload();
+                                    });
+                                }         
+                            });
+                          }
+                          
+                        });
+                    }
+                });*/
+
             </script>
-
-
-
 @endsection
