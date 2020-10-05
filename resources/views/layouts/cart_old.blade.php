@@ -121,19 +121,6 @@
                     }else{
                         Swal.fire({ text: 'Silahkan isi data terlebih dahulu!', confirmButtonColor: '#4db849'});
                     }
-
-                    /*Swal.fire({
-                      text: "Pemesanan akan diteruskan ke Whatsapp ?",
-                      showCancelButton: true,
-                      confirmButtonColor: '#4db849',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'Lanjutkan',
-                      cancelButtonText: "Batal"
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        window.open('https://api.whatsapp.com/send?phone=+6281776492873&text=Nama: '+nm+' Alamat: '+almt+' Telp: '+tlp+' Email: '+email+' Total: '+total_pay);
-                      }
-                    });*/
                 }
 
                 $(function( $ ){
